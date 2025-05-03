@@ -36,13 +36,13 @@ class QualityCheck:
         task_data = self.get_task()
         img = requests.get(task_data['params']['attachment'])
 
-        with open(f"{self.task_id}.jpg", "wb") as f:
+        with open(f"images/{self.task_id}.jpg", "wb") as f:
             f.write(img.content)
-        self.image = Image.open(f"{self.task_id}.jpg")
+        self.image = Image.open(f"images/{self.task_id}.jpg")
 
 
     def get_centerofmass_error(self, x, y, w, h, label, cropped):
-        save_dir = f"cropped_{self.task_id}"
+        save_dir = f"cropped_images/cropped_{self.task_id}"
         # Ensure the directory exists
         os.makedirs(save_dir, exist_ok=True)
 
